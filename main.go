@@ -2,62 +2,63 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/fatih/color"
+	"intro/rating"
 )
 
 type Review struct {
-	Name    string
-	Rating  int
-	Comment string
+	Name      string
+	Rating    int
+	Comment   []string
+	ProductId string
+	RatingId  string
 }
 
-func getUserInput() (string, int, string) {
-	var rating int
-	var fristName string
-	var comment string
-	fmt.Println("Welcome to the Rating App")
-	fmt.Println("What is your name?")
-	fmt.Scanln(&fristName)
-	fmt.Println("Provide a rating between 1 and 5:")
-	fmt.Scanln(&rating)
-	fmt.Println("Any comments?")
-	fmt.Scanln(&comment)
+// func getUserInput() (string, int, string) {
+// 	var rating int
+// 	var fristName string
+// 	var comment string
+// 	fmt.Println("Welcome to the Rating App")
+// 	fmt.Println("What is your name?")
+// 	fmt.Scanln(&fristName)
+// 	fmt.Println("Provide a rating between 1 and 5:")
+// 	fmt.Scanln(&rating)
+// 	fmt.Println("Any comments?")
+// 	fmt.Scanln(&comment)
 
-	return fristName, rating, comment
-}
+// 	return fristName, rating, comment
+// }
 
-func displayRatingStars(rating int) {
-	for i := 0; i < rating; i++ {
-		fmt.Print("*")
-	}
-	fmt.Println()
-}
+// func displayRatingStars(rating int) {
+// 	for i := 0; i < rating; i++ {
+// 		fmt.Print("*")
+// 	}
+// 	fmt.Println()
+// }
 
-func displayAcknowledgementMessage(fristName string, rating int, comment string) {
-	if rating >= 3 && rating <= 5 {
-		color.Green("%v, Thank you for the positive feedback! \n", fristName)
-		color.Green("We are glad you had a %v experience", comment)
-		displayRatingStars(rating)
-	} else if rating >= 1 && rating <= 2 {
-		color.Red("We appreciate your feedback %v, sorry for bad exprience !", fristName)
-		displayRatingStars(rating)
-	} else {
-		color.Yellow("Invalid rating. Please provide a rating between 1 and 5.")
-	}
+// func displayAcknowledgementMessage(fristName string, rating int, comment string) {
+// 	if rating >= 3 && rating <= 5 {
+// 		color.Green("%v, Thank you for the positive feedback! \n", fristName)
+// 		color.Green("We are glad you had a %v experience", comment)
+// 		displayRatingStars(rating)
+// 	} else if rating >= 1 && rating <= 2 {
+// 		color.Red("We appreciate your feedback %v, sorry for bad exprience !", fristName)
+// 		displayRatingStars(rating)
+// 	} else {
+// 		color.Yellow("Invalid rating. Please provide a rating between 1 and 5.")
+// 	}
 
-	fmt.Println("----- Review Summary -----")
+// 	fmt.Println("----- Review Summary -----")
 
-	var review Review
-	review.Name = fristName
-	review.Rating = rating
-	review.Comment = comment
+// 	var review Review
+// 	review.Name = fristName
+// 	review.Rating = rating
+// 	review.Comment = comment
 
-	fmt.Printf("Name: %s\n", review.Name)
-	fmt.Printf("Rating: %d\n", review.Rating)
-	fmt.Printf("Comment: %s\n", review.Comment)
+// 	fmt.Printf("Name: %s\n", review.Name)
+// 	fmt.Printf("Rating: %d\n", review.Rating)
+// 	fmt.Printf("Comment: %s\n", review.Comment)
 
-}
+// }
 
 func main() {
 	// 	fmt.Println("Hello, World!")
@@ -75,8 +76,8 @@ func main() {
 	//
 	//	fmt.Println(newLine)
 
-	fristName, rating, comment := getUserInput()
-	displayAcknowledgementMessage(fristName, rating, comment)
+	// fristName, rating, comment := getUserInput()
+	// displayAcknowledgementMessage(fristName, rating, comment)
 
 	// switch rating {
 	// case 1:
@@ -169,4 +170,50 @@ func main() {
 	// 	fmt.Printf("Name: %s, Rating: %d, Comment: %s\n", review.Name, review.Rating, review.Comment)
 	// }
 
+	// 	review1 := Review{
+	// 		Name:      "Alice",
+	// 		Rating:    5,
+	// 		Comment:   []string{"Excellent product!", "Highly recommend."},
+	// 		ProductId: "P12345",
+	// 		RatingId:  "R67890",
+	// 	}
+
+	// 	review1.Comment = append(review1.Comment, "Good")
+	// 	printMessage(review1)
+
+	// 	review2 := Review{
+	// 		Name:      "Bob",
+	// 		Rating:    2,
+	// 		Comment:   []string{"Ok", "Normal"},
+	// 		ProductId: "P12346",
+	// 		RatingId:  "R67891",
+	// 	}
+
+	// 	printMessage(review2)
+
+	mapRating := &rating.Rating{}
+	e := mapRating.AddRating("User1", 5, "Excellent product!")
+	if e != nil {
+		fmt.Println(e)
+	}
+	mapRating.AddRating("User2", 3, "Average product.")
+	if e != nil {
+		fmt.Println(e)
+	}
+	fmt.Println(mapRating)
 }
+
+// func printMessage(review Review) {
+
+// 	if review.Rating >= 3 && review.Rating <= 5 {
+// 		color.Green("%v, Thank you for the positive feedback! \n", review.Name)
+// 		color.Green("We are glad you had a %v experience", review.Comment)
+// 		displayRatingStars(review.Rating)
+// 	} else if review.Rating >= 1 && review.Rating <= 2 {
+// 		color.Red("We appreciate your feedback %v, sorry for bad exprience !", review.Name)
+// 		displayRatingStars(review.Rating)
+// 	} else {
+// 		color.Yellow("Invalid rating. Please provide a rating between 1 and 5.")
+// 	}
+
+// }
