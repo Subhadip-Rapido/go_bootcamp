@@ -1,0 +1,24 @@
+{
+    "userId": "UserId",
+    "products":[
+        {
+            "productId": "1",
+            "productName": "MacBook Air",
+            "description": "MacBook Air with M2",
+            "price": 250,
+            "quantity": 1
+        },
+        {
+            "productId": "2",
+            "name": "Dell Laptop",
+            "description": "Dell laptop with Intel and 16GB RAM",
+            "price": 250,
+            "quantity": 1
+        }
+    ],
+    "totalPrice": "500",
+    "discount":"100",
+    "grandTotal":"400",
+    "createdAt":"28-11-2025",
+    "updateAt":"28-11-2025"
+}

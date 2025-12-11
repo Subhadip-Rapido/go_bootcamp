@@ -1,0 +1,90 @@
+User is getting called :
+
+reads:
+-During the login for old user : non read heavy
+-Oder comfimration when going to extract the address base on the userId will user. : read heavy
+-My profile using userId  non read heavy
+-logout : non read heavy
+
+write:
+-updating profile information : non write heavy 
+-new user registration : non write heavy
+-password reset : non write heavy
+-deactive : non write heavy
+-auth user : non write heavy
+
+
+
+Product is getting called:
+
+read: 
+
+-User search the product using name or productId - read heavy
+-user view the prdoduct details - non read heavy
+-user increased or descreased the product price - read heavy
+-When user select scroll the page or go to the next page for get more product. - Read heavy
+-fetch product by category
+    -fetch category, 
+    -sub_category, 
+    -price, 
+    -brand, 
+    -rating
+
+//category - electronic, subCategory -> mobile, avgRating > 4.5, number of rating >10000
+    fetch product by cate and subCate. 
+    fetch product which has review more then 1000 (productId)
+    input productId
+    count the rating morethan >1000 and avgRating 4.5
+
+
+// index
+
+5000 file will cteate 20 section section
+1-500, 501-1000, 
+category:  electronic, food, sports, .......
+sub_cate: 
+
+
+
+
+
+
+write: 
+-addtion any product. - write heavy
+-delete any product - write non heavy.
+-Update the priduct quantity. - read & Write heavy (if user place and cancel the order very frequently)
+
+
+
+
+Cart is getting called:
+read:
+-featch cart details base on the userId : read heavy
+
+write:
+- Add the product to the cart : write heavy
+- Delete the product from the cart : write heavy
+- apply coupon and remove the coupon : write non heavy
+- total_price : write heavy
+
+
+Order is getting called:
+
+read:
+-Order cancel flow  -> read and write non heavy
+-get order details by userid: non read heavy
+-get order details by userId: read heavy
+
+
+write:
+
+-Once user place the order, orderId is going to create -> write heavy
+-Update the order status -> write heavy
+-Payment staus -> non write heavy
+
+
+
+ 
+
+
+
